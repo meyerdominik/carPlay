@@ -13,7 +13,8 @@ def getdevices():
     lines = __sendcommand("echo \"devices\\nquit\" | bluetoothctl").splitlines()
     for line in lines:
         if line.startswith("Device"):
-            MAC, Name = ""
+            MAC = ""
+            Name = ""
             split = line.split(' ')
 
             MAC = split[1]
