@@ -9,4 +9,6 @@ def GetDevices():
 
     AllDevices = __SendCommand("echo \"devices\\nquit\" | bluetoothctl")
 
+    print "---"
     print AllDevices
+    print "---"
