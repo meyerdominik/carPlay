@@ -3,13 +3,13 @@ import subprocess
 
 
 def __sendcommand(command):
-    return subprocess.call(command, shell=True, cwd=os.path.expanduser('~'))
+    return os.popen(command).read()
 
 
 def getdevices():
     rtn = list()
 
-    AllDevices = __sendcommand("echo \"devices\\nquit\" | bluetoothctl")
+    AllDevices = __sendcommand("echo \"devices\\nquit\" | bluetoothctl | echo")
 
     print "---"
     print AllDevices
