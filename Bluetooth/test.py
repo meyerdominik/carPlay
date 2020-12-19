@@ -1,3 +1,4 @@
 import BluetoothAPI
 
-BluetoothAPI.getdevices()
+for device in BluetoothAPI.GetDevices():
+    device.PrintAllInfo()
