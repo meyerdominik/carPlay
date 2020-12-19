@@ -14,10 +14,10 @@ class Device(object):
     LegacyPairing = False
 
     def PrintAllInfo(self):
-        print("Name:" + self.Name)
-        print("MAC:" + self.MAC)
-        print("Alias:" + self.Alias)
-        print("Icon:" + self.Icon)
+        print("Name: " + self.Name)
+        print("MAC: " + self.MAC)
+        print("Alias: " + self.Alias)
+        print("Icon: " + self.Icon)
         if self.Paired:
             print("Paired: True")
         else:
@@ -43,6 +43,7 @@ class Device(object):
         lines = SendCommand("echo \"info " + self.MAC + "\\nquit\" | bluetoothctl").splitlines()
         spacers = "        "
         for line in lines:
+            print line
             split = line.split(": ")
             if line.startswith(spacers + "Alias"):
                 self.Alias = split[1]
