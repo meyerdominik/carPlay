@@ -43,7 +43,7 @@ class Device(object):
         lines = SendCommand("echo \"info " + self.MAC + "\\nquit\" | bluetoothctl").splitlines()
         for line in lines:
             split = line.split(": ")
-            splitWithoutSpacers = split[0].replace(" ", "")
+            splitWithoutSpacers = split[0].replace(" ", "").replace("\t", "")
             print splitWithoutSpacers
             if splitWithoutSpacers.startswith("Alias"):
                 self.Alias = split[1]
