@@ -3,7 +3,7 @@ import subprocess
 
 
 def __sendcommand(command):
-    return subprocess.call(command, stdout=subprocess.PIPE)
+    return subprocess.call(command, shell=True, cwd=os.path.expanduser('~'))
 
 
 def getdevices():
