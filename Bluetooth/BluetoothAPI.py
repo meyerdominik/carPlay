@@ -41,27 +41,26 @@ class Device(object):
 
     def GetMoreDeviceInfo(self):
         lines = SendCommand("echo \"info " + self.MAC + "\\nquit\" | bluetoothctl").splitlines()
-        spacers = "        "
         for line in lines:
-            print line
             split = line.split(": ")
-            if line.startswith(spacers + "Alias"):
+            splitWithoutSpacers = split[0].replace(" ", "")
+            if splitWithoutSpacers.startswith("Alias"):
                 self.Alias = split[1]
-            elif line.startswith(spacers + "Icon"):
+            elif splitWithoutSpacers.startswith("Icon"):
                 self.Icon = split[1]
-            elif line.startswith(spacers + "Paired"):
+            elif splitWithoutSpacers.startswith("Paired"):
                 if split[1] == "yes":
                     self.Paired = True
-            elif line.startswith(spacers + "Trusted"):
+            elif splitWithoutSpacers.startswith("Trusted"):
                 if split[1] == "yes":
                     self.Trusted = True
-            elif line.startswith(spacers + "Blocked"):
+            elif splitWithoutSpacers.startswith("Blocked"):
                 if split[1] == "yes":
                     self.Blocked = True
-            elif line.startswith(spacers + "Connected"):
+            elif splitWithoutSpacers.startswith("Connected"):
                 if split[1] == "yes":
                     self.Connected = True
-            elif line.startswith(spacers + "LegacyPairing"):
+            elif splitWithoutSpacers.startswith("LegacyPairing"):
                 if split[1] == "yes":
                     self.LegacyPairing = True
 
