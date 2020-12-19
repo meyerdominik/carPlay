@@ -13,6 +13,7 @@ def getdevices():
     lines = __sendcommand("echo \"devices\\nquit\" | bluetoothctl").splitlines()
     bDevices = False
     for line in lines:
+        print "line" + line
         if bDevices and not line.startswith("[bluetooth]"):
             Group, MAC, Name = ""
             split = line.split(' ')
@@ -28,8 +29,10 @@ def getdevices():
 
         if line.startswith("[bluetooth]"):
             if bDevices:
+                print "false"
                 bDevices = False
             else:
+                print "true"
                 bDevices = True
 
 
