@@ -1,0 +1,3 @@
+import BluetoothAPI
+
+BluetoothAPI.GetDevices()
