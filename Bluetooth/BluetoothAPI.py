@@ -20,10 +20,6 @@ def getdevices():
             MAC = split[1]
             Name = line.split(str(MAC) + str(" "))[1]
 
-            print MAC
-            print Name
-            #list.__add__(Device(Group, MAC, Name))
-
-
+            list.__add__(Device(MAC, Name))
     return rtn
 
