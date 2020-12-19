@@ -44,6 +44,7 @@ class Device(object):
         for line in lines:
             split = line.split(": ")
             splitWithoutSpacers = split[0].replace(" ", "")
+            print splitWithoutSpacers
             if splitWithoutSpacers.startswith("Alias"):
                 self.Alias = split[1]
             elif splitWithoutSpacers.startswith("Icon"):
