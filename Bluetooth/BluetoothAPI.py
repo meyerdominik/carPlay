@@ -1,5 +1,5 @@
 import os
-import subprocess
+import Device
 
 
 def __sendcommand(command):
@@ -9,8 +9,30 @@ def __sendcommand(command):
 def getdevices():
     rtn = list()
 
-    AllDevices = __sendcommand("echo \"devices\\nquit\" | bluetoothctl")
+    # get all bluetooth device lines
+    lines = __sendcommand("echo \"devices\\nquit\" | bluetoothctl").splitlines()
+    bDevices = False
+    for line in lines:
+        if bDevices and not line.startswith("[bluetooth]"):
+            Group, MAC, Name = ""
+            split = line.split(' ')
 
-    print "---"
-    print AllDevices
-    print "---"
+            Group = split[0]
+            MAC = split[1]
+            Name = line.split(str(MAC) + str(" "))[1]
+
+            print Group
+            print MAC
+            print Name
+            #list.__add__(Device(Group, MAC, Name))
+
+        if line.startswith("[bluetooth]"):
+            if bDevices:
+                bDevices = False
+            else:
+                bDevices = True
+
+
+
+    return rtn
+
