@@ -9,7 +9,7 @@ def __sendcommand(command):
 def getdevices():
     rtn = list()
 
-    AllDevices = __sendcommand("echo \"devices\\nquit\" | bluetoothctl | echo")
+    AllDevices = __sendcommand("echo \"devices\\nquit\" | bluetoothctl")
 
     print "---"
     print AllDevices
