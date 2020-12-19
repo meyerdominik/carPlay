@@ -1,3 +1,3 @@
 import BluetoothAPI
 
-BluetoothAPI.GetDevices()
+BluetoothAPI.getdevices()
